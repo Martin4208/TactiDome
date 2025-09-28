@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  db:
+    image: postgis/postgis
+    environment:
+      - POSTGRES_DB=tactidome_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=tactidome-123
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

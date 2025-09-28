@@ -1,0 +1,22 @@
+{
+    "drone_stats": {
+        "id": "D0001",
+        "battery": 32,
+        "condition": "normal",
+        "timestamp": "2025-9-20T13:22:31Z"
+    },
+    "location": {
+        "latitude": 35.6895,
+        "longitude": 139.6917,
+        "altitude": 25.3
+    },
+    "movement": {
+        "speed": 34.9,
+        "direction": 120
+    },
+    "discovery": {
+        "found": "yes",
+        "object": "car",
+        "danger": "no"
+    }
+}
