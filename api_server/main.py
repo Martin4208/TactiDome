@@ -48,7 +48,6 @@ class ConnectionManager:
     def __init__(self):
         self.active_connections = []
         
-        
     def add_connection(self, websocket):
         self.active_connections.append(websocket)
         

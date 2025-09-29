@@ -8,7 +8,7 @@ class Drone:
     tokyo_station_lat = 35.681236
     tokyo_station_lon = 139.767125
     patrol_radius = 2
-    battery_decline_rate = 10
+    battery_decline_rate = 0.1
     detect_rate = 0.03
     def __init__(self):
         self.angle = 0
@@ -145,7 +145,7 @@ def main():
             drone.calculate_position()
             drone.POST()
             drone.flying_stats_check()
-            time.sleep(1)
+            time.sleep(0.001)
         print("プログラム終了")
     except KeyboardInterrupt:
         print("Ctrl+Cで停止されました")
