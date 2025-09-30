@@ -16,13 +16,13 @@ logger = logging.getLogger(__name__)
 class DroneStats(BaseModel):
     id: str
     battery: float = Field(ge=0, le=100)
-    condition: Literal["normal", "warning", "error"]
+    condition: Literal["normal", "warning", "error", "enemy"]
     timestamp: str
 
 
 class Location(BaseModel):
-    latitude: float = Field(ge=35.66, le=35.70)
-    longitude: float = Field(ge=139.74, le=139.79)
+    latitude: float = Field(ge=35.60, le=35.75)
+    longitude: float = Field(ge=139.68, le=139.85)
     altitude:  float = Field(ge=0.0, le=50.0)
 
 

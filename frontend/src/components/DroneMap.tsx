@@ -44,19 +44,46 @@ const tokyo_station_lon = 139.767125
 const position: [number, number] = [tokyo_station_lat, tokyo_station_lon]
 const zoom_level = 14
 
-const DroneMap: React.FC = ({ drones }) => {
+// カスタムアイコンを作成
+const createIcon = (color: string) => {
+  return L.divIcon({
+    className: 'custom-marker',
+    html: `<div style="
+      background-color: ${color};
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid white;
+    "></div>`,
+    iconSize: [20, 20],
+    iconAnchor: [10, 10]
+  });
+};
+
+const DroneMap: React.FC<DroneMapProps> = ({ drones }) => {
     return (
-        <MapContainer center={position} zoom={zoom_level} style={{height: "100%", width: "100%"}} scrollWheelZoom={false}>
+        <MapContainer 
+            center={position} 
+            zoom={zoom_level} 
+            style={{height: "100%", width: "100%"}} 
+            scrollWheelZoom={false}
+        >
             <TileLayer 
                 attribution="&copy; <a href=https://www.openstreetmap.org/copyright>OpenStreetMap</a> contributors"
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {drones.map((drone) => (
-            <Marker 
-                key={drone.drone_stats.id}
-                position={[drone.location.latitude, drone.location.longitude]}
-            />
-            ))}
+            {drones.map((drone) => {
+                // ← { } で囲む
+                const markerColor = drone.drone_stats.condition === "enemy" ? "red" : "blue";
+                
+                return (
+                    <Marker 
+                        key={drone.drone_stats.id}
+                        position={[drone.location.latitude, drone.location.longitude]}
+                        icon={createIcon(markerColor)}
+                    />
+                );
+            })}
         </MapContainer>
     );
 };
